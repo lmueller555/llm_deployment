@@ -1,4 +1,4 @@
-pinecone_cli
+pinecone_cli==1.1
 openai
 langchain
 protobuf==3.20.0
