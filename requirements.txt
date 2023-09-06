@@ -1,4 +1,4 @@
-pinecone-client[grpc]
+pinecone-client[grpc]==2.2.0
 protobuf==3.13.0
 openai
 langchain
