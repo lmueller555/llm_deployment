@@ -1,4 +1,3 @@
 pinecone-client[grpc]
-protobuf
 openai
 langchain
