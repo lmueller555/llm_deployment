@@ -1,4 +1,4 @@
 pinecone-client[grpc]
-protobuf <= 3.20.x
+protobuf <= 3.20.0
 openai
 langchain
