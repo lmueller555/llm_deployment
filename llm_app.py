@@ -1,5 +1,10 @@
 # Required imports
 import streamlit as st
+import os 
+
+# Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION environment variable
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+
 from langchain.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma, Pinecone
