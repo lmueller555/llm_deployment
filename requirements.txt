@@ -49,10 +49,9 @@ openai==0.27.10
 packaging==23.1
 pandas==2.0.3
 Pillow==9.5.0
-pinecone-cli
-pinecone-client
-pinecone-client[grpc]
-protobuf<5
+pinecone-cli==1.1
+pinecone-client==2.2.2
+protobuf==3.20.3
 py==1.11.0
 pyarrow==13.0.0
 pydantic==2.3.0
