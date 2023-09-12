@@ -52,7 +52,7 @@ Pillow==9.5.0
 pinecone-cli
 pinecone-client
 pinecone-client[grpc]
-protobuf==3.19.5
+protobuf<3.5
 py==1.11.0
 pyarrow==13.0.0
 pydantic==2.3.0
