@@ -42,7 +42,7 @@ llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
 chain = load_qa_chain(llm, chain_type="stuff")
 
 # Streamlit UI
-st.title("WGU ChatLR Pre-Alpha Test DEV")
+st.title("WGU ChatLR Pre-Alpha")
 
 # Using markdown with custom CSS to enlarge the font of the instruction
 st.markdown("<style>div.stMarkdown p {font-size: 20px;}</style>", unsafe_allow_html=True)
