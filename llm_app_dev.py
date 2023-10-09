@@ -44,7 +44,11 @@ chain = load_qa_chain(llm, chain_type="stuff")
 # Streamlit UI
 st.title("WGU ChatLR Pre-Alpha Test DEV")
 
-raw_user_query = st.text_input("What would you like to know?")
+# Using markdown with custom CSS to enlarge the font of the instruction
+st.markdown("<style>div.stMarkdown p {font-size: 20px;}</style>", unsafe_allow_html=True)
+st.markdown("Enter your query and press ENTER to submit.")
+
+raw_user_query = st.text_input("")
 
 if raw_user_query:  # Checking if there's input to process
     instruction = "You are not allowed to answer based on anything but the documents that were uploaded."
@@ -69,3 +73,4 @@ else:
 
 if __name__ == "__main__":
     pass  # Streamlit runs the script top to bottom every time an action is taken, no need for a main loop.
+
