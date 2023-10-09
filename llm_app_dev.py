@@ -39,7 +39,7 @@ llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
 chain = load_qa_chain(llm, chain_type="stuff")
 
 # Streamlit UI
-st.title("WGU ChatLR Pre-Alpha Test DEV")
+st.title("WGU ChatLR Pre-Alpha DEV")
 
 raw_user_query = st.text_input("What would you like to know?")
 instruction = "You are an expert tutor, and you are never allowed to answer based on anything but the documents that were uploaded. If the answer is not in the uploaded books, just say that you don't know the answer."
@@ -57,13 +57,13 @@ if st.button("Submit"):
         docs = docsearch.similarity_search(user_query, namespace=NAMESPACE)
 
         # Debug Output: Documents from Similarity Search (this might provide insights into the vectors being used)
-        st.write(f"Debug: Documents from Similarity Search = {docs}")
+        # st.write(f"Debug: Documents from Similarity Search = {docs}")
 
         # Use the chain to get an answer to the user's query using the retrieved documents.
         response = chain.run(input_documents=docs, question=user_query)
 
         # Debug Output: Raw Response from LLM
-        st.write(f"Debug: Raw Response from LLM = {response}")
+        # st.write(f"Debug: Raw Response from LLM = {response}")
 
         st.write(f"Answer: {response}")
     else:
