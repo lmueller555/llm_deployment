@@ -53,9 +53,8 @@ raw_user_query = st.text_input("")
 if raw_user_query:  # Checking if there's input to process
     instruction = "You are not allowed to answer based on anything but the documents that were uploaded."
     if "summarize" in raw_user_query.lower():
-        instruction += "You are an expert tutor. You are not allowed to answer based on anything but the documents that were uploaded."
-    user_query = f"{instruction} {raw_user_query}"
-
+        instruction += " You are an expert tutor."
+    user_query = f"{raw_user_query} {instruction}"
     print(f"Received user query: {user_query}")
     
     # Perform a similarity search based on the user's query
@@ -73,4 +72,5 @@ else:
 
 if __name__ == "__main__":
     pass  # Streamlit runs the script top to bottom every time an action is taken, no need for a main loop.
+
 
