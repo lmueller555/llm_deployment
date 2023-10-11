@@ -51,7 +51,7 @@ st.markdown("Enter your query and press ENTER to submit.")
 raw_user_query = st.text_input("")
 
 if raw_user_query:  # Checking if there's input to process
-    instruction = "You are not allowed to answer based on anything but the documents that were uploaded."
+    instruction = " You are not allowed to answer based on anything but the documents that were uploaded."
     if "summarize" in raw_user_query.lower():
         instruction += " You are an expert tutor."
     user_query = f"{raw_user_query} {instruction}"
