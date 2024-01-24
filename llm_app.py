@@ -29,8 +29,10 @@ if INDEX_NAME not in pc.list_indexes().names():
     pc.create_index(
         name=INDEX_NAME, 
         dimension=768,  # Example dimension, adjust as needed
-        metric='cosine'  # Example metric, adjust as needed
-        # Add other parameters as needed
+        metric='euclidean',
+        spec=ServerlessSpec(
+        cloud='aws',
+        region='us-west-2'
     )
 
 # Connect to an existing Pinecone index
