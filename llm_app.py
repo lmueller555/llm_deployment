@@ -1,7 +1,7 @@
 # Required imports
 import streamlit as st
 import os
-from pinecone import Pinecone
+from pinecone import Pinecone, ServerlessSpec
 from langchain.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
@@ -33,7 +33,7 @@ if INDEX_NAME not in pc.list_indexes().names():
         spec=ServerlessSpec(
         cloud='aws',
         region='us-west-2'
-    )
+    ))
 
 # Connect to an existing Pinecone index
 # Note: Ensure LangChainPinecone's from_existing_index method is compatible with your Pinecone instance
