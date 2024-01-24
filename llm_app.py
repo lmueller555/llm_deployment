@@ -24,16 +24,16 @@ embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 # Create a Pinecone instance
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
-# Check if the index exists and create it if it does not
-if INDEX_NAME not in pc.list_indexes().names():
-    pc.create_index(
-        name=INDEX_NAME, 
-        dimension=768,  # Example dimension, adjust as needed
-        metric='euclidean',
-        spec=ServerlessSpec(
-        cloud='aws',
-        region='us-west-2'
-    )
+# # Check if the index exists and create it if it does not
+# if INDEX_NAME not in pc.list_indexes().names():
+#     pc.create_index(
+#         name=INDEX_NAME, 
+#         dimension=768,  # Example dimension, adjust as needed
+#         metric='euclidean',
+#         spec=ServerlessSpec(
+#         cloud='aws',
+#         region='us-west-2'
+#     )
 
 # Connect to an existing Pinecone index
 # Note: Ensure LangChainPinecone's from_existing_index method is compatible with your Pinecone instance
