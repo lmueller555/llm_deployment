@@ -33,7 +33,7 @@ pinecone.init(
 docsearch = Pinecone.from_existing_index(INDEX_NAME, embeddings, namespace=NAMESPACE)
 
 # Set up the OpenAI language model
-llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+llm = OpenAI(model = "gpt-3.5-turbo-instruct", temperature=0, openai_api_key=OPENAI_API_KEY)
 
 # Load the QA chain
 chain = load_qa_chain(llm, chain_type="stuff")
