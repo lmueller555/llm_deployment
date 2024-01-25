@@ -39,7 +39,7 @@ llm = OpenAI(model = "gpt-3.5-turbo-instruct", temperature=0, openai_api_key=OPE
 chain = load_qa_chain(llm, chain_type="stuff")
 
 # Streamlit UI
-st.title("WGU LLM Pre-Alpha Test")
+st.title("ChatLR Pre-Alpha")
 
 user_query = st.text_input("What would you like to know?")
 
