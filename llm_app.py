@@ -38,7 +38,7 @@ if INDEX_NAME not in pc.list_indexes().names():
 # Connect to an existing Pinecone index
 # Note: Ensure LangChainPinecone's from_existing_index method is compatible with your Pinecone instance
 from langchain.vectorstores import Pinecone as LangChainPinecone
-docsearch = LangChainPinecone.from_existing_index(INDEX_NAME, embeddings, namespace=NAMESPACE)
+docsearch = LangChainPinecone.from_existing_index(INDEX_NAME, embeddings, namespace=NAMESPACE, host="https://firstindex-f702d93.svc.us-west4-gcp-free.pinecone.io")
 
 # Set up the OpenAI language model
 llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
