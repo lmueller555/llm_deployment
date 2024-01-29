@@ -67,8 +67,8 @@ if raw_user_query:  # Checking if there's input to process
     # st.write(f"Debug: Raw Response from LLM = {response}")
 
     st.write(f"Answer: {response}")
-else:
-    st.write("Please enter a valid question.")
+# else:
+#     st.write("Please enter a valid question.")
 
 if __name__ == "__main__":
     pass  # Streamlit runs the script top to bottom every time an action is taken, no need for a main loop.
