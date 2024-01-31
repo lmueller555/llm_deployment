@@ -59,11 +59,11 @@ if raw_user_query:  # Checking if there's input to process
     
     # Perform a similarity search based on the user's query
     print("Performing similarity search...")
-    docs = docsearch.similarity_search(user_query, namespace=NAMESPACE)
+    docs = docsearch.similarity_search(raw_user_query, namespace=NAMESPACE)
     # st.write(f"Debug: Documents from Similarity Search = {docs}")
 
     # Use the chain to get an answer to the user's query using the retrieved documents.
-    response = chain.run(input_documents=docs, question=user_query)
+    response = chain.run(input_documents=docs, question=raw_user_query)
     # st.write(f"Debug: Raw Response from LLM = {response}")
 
     st.write(f"Answer: {response}")
