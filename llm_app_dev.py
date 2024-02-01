@@ -51,19 +51,19 @@ st.markdown("Enter your query and press ENTER to submit.")
 raw_user_query = st.text_input("")
 
 if raw_user_query:  # Checking if there's input to process
-    instruction = " You are not allowed to answer based on anything but the documents that were uploaded."
+    instruction = "You are not allowed to answer based on anything but the documents that were uploaded."
     if "summarize" in raw_user_query.lower():
-        instruction += " You are an expert tutor."
+        instruction += "You are an expert tutor."
     user_query = f"{raw_user_query} {instruction}"
     print(f"Received user query: {user_query}")
     
     # Perform a similarity search based on the user's query
     print("Performing similarity search...")
-    docs = docsearch.similarity_search(raw_user_query, namespace=NAMESPACE)
+    docs = docsearch.similarity_search(user_query, namespace=NAMESPACE)
     # st.write(f"Debug: Documents from Similarity Search = {docs}")
 
     # Use the chain to get an answer to the user's query using the retrieved documents.
-    response = chain.run(input_documents=docs, question=raw_user_query)
+    response = chain.run(input_documents=docs, question=user_query)
     # st.write(f"Debug: Raw Response from LLM = {response}")
 
     st.write(f"Answer: {response}")
