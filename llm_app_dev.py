@@ -1,6 +1,6 @@
 # Required imports
 import streamlit as st
-import os
+import os 
 
 # Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION environment variable
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
@@ -8,7 +8,7 @@ os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 from langchain.document_loaders import UnstructuredPDFLoader, OnlinePDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma, Pinecone
-from pinecone.grpc import PineconeGRPC as Pinecone, ServerlessSpec, PodSpec
+import pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.chains.question_answering import load_qa_chain
@@ -25,14 +25,18 @@ embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
 
 print("Initializing Pinecone...")
 # Initialize Pinecone
-pc = Pinecone(api_key=PINECONE_API_KEY)
+pinecone.init(
+    api_key=PINECONE_API_KEY,
+    environment="us-west4-gcp-free",
+    index = INDEX_NAME
+)
 
 print("Connecting to Pinecone index...")
 # Connect to an existing Pinecone index
 docsearch = Pinecone.from_existing_index(INDEX_NAME, embeddings, namespace=NAMESPACE)
 
 # Set up the OpenAI language model
-llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0, openai_api_key=OPENAI_API_KEY)
+llm = OpenAI(model = "gpt-3.5-turbo-instruct", temperature=0, openai_api_key=OPENAI_API_KEY)
 
 # Load the QA chain
 chain = load_qa_chain(llm, chain_type="stuff")
@@ -49,7 +53,7 @@ raw_user_query = st.text_input("")
 if raw_user_query:  # Checking if there's input to process
     instruction = "You are not allowed to answer based on anything but the documents that were uploaded."
     if "summarize" in raw_user_query.lower():
-        instruction += " You are an expert tutor."
+        instruction += "You are an expert tutor."
     user_query = f"{raw_user_query} {instruction}"
     print(f"Received user query: {user_query}")
     
