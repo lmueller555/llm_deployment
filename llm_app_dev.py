@@ -16,7 +16,7 @@ from langchain.chains.question_answering import load_qa_chain
 # Configuration & Initialization
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
-INDEX_NAME = "firstindex2"
+INDEX_NAME = "chatlr"
 NAMESPACE = "book"
 
 print("Initializing OpenAI Embeddings...")
